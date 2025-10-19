@@ -48,3 +48,27 @@ python agent.py --model gpt-4o-mini --system "You are a cybersecurity expert." "
 ```
 
 Refer to the docstrings inside `agent.py` for more details.
+
+### Multi-agent predictive analytics
+
+The repository also provides [`multi_agent.py`](multi_agent.py), a
+multi-specialist orchestrator that profiles large CSV datasets locally before
+engaging a cohort of ChatGPT agents. Use it to cross-reference predictive
+indicators, surface risks, and synthesise an executive-ready briefing.
+
+Run a quick dataset preview without invoking the API:
+
+```bash
+python multi_agent.py data/your_dataset.csv --preview
+```
+
+Execute the full agent workflow with indicator hints:
+
+```bash
+python multi_agent.py data/your_dataset.csv \
+  --indicators "conversion_rate" "customer_lifetime_value" \
+  --model gpt-4o-mini
+```
+
+Adjust `--max-rows` if you want to cap how many rows are profiled locally when
+working with very large files.
